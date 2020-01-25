@@ -20,8 +20,14 @@ export default class SectionOne extends React.Component<any, IPropState> {
     ]
   };
   isURL = (str: string) => {
-    const res = str.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    return (res !== null)
+    const pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?' +
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+      '((\\d{1,3}\\.){3}\\d{1,3}))' +
+      '(\\:\\d+)?' + // port
+      '(\\/[-a-z\\d%@_.~+&:]*)*' +
+      '(\\?[;&a-z\\d%@_.,~+&:=-]*)?' +
+      '(\\#[-a-z\\d_]*)?$', 'i');
+    return pattern.test(str);
   };
 
   addItem = (body: any) => {
