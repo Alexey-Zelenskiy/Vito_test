@@ -1,3 +1,9 @@
+
+Link to https://alexey-zelenskiy.github.io/vito.github.io/,
+select the section on the main page, in the 1st section you can add pictures by url,
+in the 2nd section you need to enter the username on github and all its repositories will appear.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
