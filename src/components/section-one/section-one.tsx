@@ -19,15 +19,19 @@ export default class SectionOne extends React.Component<any, IPropState> {
       },
     ]
   };
+  isURL = (str: string) => {
+    const res = str.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    return (res !== null)
+  };
 
   addItem = (body: any) => {
     const newItem = {
       label: body,
       id: this.uniqueId()
     };
-    if (newItem.label.length === 0) {
+    if (!this.isURL(newItem.label)) {
       return (
-        alert('Введите текст')
+        alert('Введите url')
       )
     } else {
       // @ts-ignore
@@ -68,13 +72,13 @@ export default class SectionOne extends React.Component<any, IPropState> {
     const {itemList} = this.state;
     return (
       <div>
-          <ImgAddForm onAdd={this.addItem}/>
-            <div className="row">
-              <ImgList
-                post={itemList}
-                onDelete={this.deleteItem}
-              />
-            </div>
+        <ImgAddForm onAdd={this.addItem}/>
+        <div className="row">
+          <ImgList
+            post={itemList}
+            onDelete={this.deleteItem}
+          />
+        </div>
       </div>
 
     )
